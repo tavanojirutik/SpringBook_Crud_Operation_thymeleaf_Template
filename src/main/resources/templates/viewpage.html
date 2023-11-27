@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+<div class="container" th:action="@{/showpage}" method = "post" th:object="${std}">
+ 	
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Roll Number</th>
+      <th scope="col">Delete Cell</th>
+      <th scope="col">Update Cell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="e:${std}">
+     
+      <th th:text="${e.id}"></th>
+      <td th:text="${e.stdname}"></td>
+      <td th:text="${e.address}"></td>
+      <td th:text="${e.rollno}"></td>
+      <td><a th:href="@{/delete/{id} (id=${e.id})}">Delete</a></td>
+      <td><a th:href="@{/update/{id} (id=${e.id})}">Update</a></td>
+    </tr>
+  </tbody>
+</table>
+ 
+</div>
+
+</body>
+</html>
